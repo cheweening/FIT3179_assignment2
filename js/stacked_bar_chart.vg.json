@@ -11,7 +11,7 @@
       "lookup": "Country or region",
       "from": {"data": {"url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"}, "key": "Country or region", "fields": ["GDP per capita"]}
     },
-    {"fold": ["GDP per capita", "Social support","Healthy life expectancy","Freedom to make life choices","Generosity","Perceptions of corruption"], "as": ["Breakdown Factors", "Happiness Score"]}
+    {"fold": ["GDP per capita", "Social support","Healthy life expectancy","Freedom to make life choices","Generosity","Perceptions of corruption","Dystopia & residual"], "as": ["Breakdown Factors", "Happiness Score"]}
   ],
   "mark": "bar",
   "encoding": {
