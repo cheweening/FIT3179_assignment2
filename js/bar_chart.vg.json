@@ -8,8 +8,17 @@
   },
   "mark": "bar",
   "encoding": {
-    "color": {"field": "continent", "type": "nominal"},
-    "x": {"field": "continent", "type": "nominal"},
-    "y": {"aggregate":"average" ,"field": "Score", "type": "quantitative"}
+    "color": {
+      "field": "Continent", 
+      "type": "nominal",
+      "scale": 
+              {"range": ["#c1e7e3","#c6e2e9","#a7bed3","#c1bbdd","#ffcaaf","#ecc9c7"]}
+      },
+    "x": {"field": "Continent", "type": "nominal"},
+    "y": {"aggregate":"average" ,"field": "Score", "type": "quantitative"},
+    "tooltip": [
+          {"field": "Continent", "type": "nominal"},
+          {"aggregate":"average" ,"field": "Score", "type": "quantitative", "format": ","}
+        ]
   }
 }
