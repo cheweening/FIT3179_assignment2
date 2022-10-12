@@ -1,52 +1,82 @@
 {
-  "$schema":  "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
     "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
   },
   "vconcat": [
-    {"width": 300,
-  "height": 300,
-  "title": "Breakdown Factor in percentage for each Country",
-  "transform": [{
-      "lookup": "Country or region",
-      "from": {"data": {"url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"}, "key": "Country or region", "fields": ["GDP per capita"]}
+    {
+      "width": 300,
+      "height": 300,
+      "title": "Breakdown Factor in percentage for each Country",
+      "transform": [
+        {
+          "lookup": "Country or region",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
+            },
+            "key": "Country or region",
+            "fields": ["GDP per capita"]
+          }
+        },
+        {
+          "fold": [
+            "GDP per capita",
+            "Social support",
+            "Healthy life expectancy",
+            "Freedom to make life choices",
+            "Generosity",
+            "Perceptions of corruption",
+            "Dystopia & residual"
+          ],
+          "as": ["Breakdown Factors", "Happiness Score"]
+        },
+        {"filter": {"param": "select"}}
+      ],
+      "data": {
+        "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
+      },
+      "mark": "arc",
+      "encoding": {
+        "theta": {
+          "field": "Happiness Score",
+          "type": "quantitative",
+          "stack": "normalize"
+        },
+        "color": {
+          "field": "Breakdown Factors",
+          "type": "nominal",
+          "scale": {
+            "range": [
+              "#E2F0CB",
+              "#D3C4BE",
+              "#E9CCB1",
+              "#FF9AA2",
+              "#FFB7B2",
+              "#D5CDDE",
+              "#B5EAD7"
+            ]
+          }
+        },
+        "tooltip": [
+          {"field": "Country or region", "type": "nominal"},
+          {"field": "Breakdown Factors", "type": "nominal"},
+          {"field": "Happiness Score", "type": "quantitative"}
+        ]
+      }
     },
-      {"fold": ["GDP per capita", "Social support","Healthy life expectancy","Freedom to make life choices","Generosity","Perceptions of corruption","Dystopia & residual"], "as": ["Breakdown Factors", "Happiness Score"]},
-       {"filter": {"param": "select"}}
-  ],
-  "data": {
-    "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
-  },
-  "mark":"arc",
-        "encoding": {
-          "theta": {"field": "Happiness Score", "type": "quantitative", "stack": "normalize"},
-          "color": {
-            "field": "Breakdown Factors", 
-            "type": "nominal",
-            "scale": 
-              {"range": ["#E2F0CB","#D3C4BE","#E9CCB1", "#FF9AA2", "#FFB7B2", "#D5CDDE","#B5EAD7"]}
-              },
-          "tooltip": [
-        {"field": "Country or region", "type": "nominal"},
-        {"field": "Breakdown Factors", "type": "nominal"},
-        {"field": "Happiness Score", "type": "quantitative"}]
-  }
-    }
-    ,{
+    {
+      "hconcat": [{
     "width": 800,
-    "height": 3500,
+    "height": 3200,
     "title": "Happiness Score Factor Breakdown (2019)",
     "transform": [{
       "lookup": "Country or region",
       "from": {"data": {"url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"}, "key": "Country or region", "fields": ["GDP per capita"]}
     },
-      {"fold": ["GDP per capita", "Social support","Healthy life expectancy","Freedom to make life choices","Generosity","Perceptions of corruption","Dystopia & residual"], "as": ["Breakdown Factors", "Happiness Score"]}
+      {"fold": ["GDP per capita", "Social support","Healthy life expectancy","Freedom to make life choices","Generosity","Perceptions of corruption","Dystopia & residual"], "as": ["Breakdown Factors", "Happiness Score"]},
+      {"filter": {"param": "brush"}}
   ],
-    "encoding": {
-    "color": {"field": "Breakdown Factors", "type": "nominal"},
-    "x": {"field": "Happiness Score", "type": "quantitative", "scale": {"domain": [0, 9]}},
-    "y": {"field": "Country or region", "type": "nominal", "sort": "-x"}
-      },
     "layer": [{
       "mark": "bar",
       "params": [{
@@ -55,8 +85,17 @@
       }],
       "encoding": {
       "color": {"field": "Breakdown Factors", "type": "nominal"},
-      "x": {"field": "Happiness Score", "type": "quantitative", "scale": {"domain": [0, 9]}},
-      "y": {"field": "Country or region", "type": "nominal", "sort": "-x"},
+      "x": {
+        "field": "Happiness Score", 
+        "type": "quantitative", 
+        "scale": {"domain": [0, 9]},
+        "axis": {"orient": "top"}},
+      "y": {
+        "field": "Country or region", 
+        "type": "nominal", 
+        "axis": {"minExtent": 200, "title": null},
+        "sort": "-x"
+        },
       "tooltip": [
         {"field": "Country or region", "type": "nominal"},
         {"field": "GDP per capita", "type": "quantitative"},
@@ -69,11 +108,33 @@
         {"field": "Score", "type": "quantitative", "format": ","}]
       }
     }]
-  }],
-  "resolve": {
-    "legend": {
-      "color": "independent",
-      "size": "independent"
+  }, {
+    "height": 200,
+    "width": 50,
+    "params": [{
+      "name": "brush",
+      "select": {
+        "type": "interval",
+        "encodings": ["y"]
+      }
+    }],
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "Country or region",
+        "type": "nominal",
+        "sort": "-x",
+        "axis": null
+      },
+      "x": {
+        "field": "Score", 
+        "type": "quantitative",
+        "scale": {"domain": [0, 9]},
+        "axis": null
+      }
     }
-  }
+  }]
+    }
+  ],
+  "resolve": {"legend": {"color": "independent", "size": "independent"}}
 }

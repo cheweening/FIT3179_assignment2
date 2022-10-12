@@ -7,7 +7,18 @@
   "data": {
     "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
   },
-  "mark": "bar",
+  "mark": {
+    "type": "bar",
+    "stroke": "black",
+    "cursor": "pointer"
+  },
+  "params": [
+    {
+      "name": "highlight",
+      "select": {"type": "point", "on": "mouseover"}
+    },
+    {"name": "select", "select": "point"}
+  ],
   "encoding": {
     "color": {
       "field": "Continent", 
@@ -20,6 +31,30 @@
     "tooltip": [
           {"field": "Continent", "type": "nominal"},
           {"aggregate":"average" ,"field": "Score", "type": "quantitative", "format": ","}
-        ]
+        ],
+        "fillOpacity": {
+          "condition": {"param": "select", "value": 1},
+          "value": 0.3
+        },
+        "strokeWidth": {
+          "condition": [
+            {
+              "param": "select",
+              "empty": false,
+              "value": 2
+            },
+            {
+              "param": "highlight",
+              "empty": false,
+              "value": 1
+            }
+          ],
+          "value": 0
+        }
+  },
+  "config": {
+    "scale": {
+      "bandPaddingInner": 0.2
+    }
   }
 }
