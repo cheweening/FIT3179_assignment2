@@ -67,8 +67,6 @@
     },
     {
       "hconcat": [{
-    "width": 800,
-    "height": 3200,
     "title": "Happiness Score Factor Breakdown (2019)",
     "transform": [{
       "lookup": "Country or region",
