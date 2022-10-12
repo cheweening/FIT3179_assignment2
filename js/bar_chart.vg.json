@@ -4,6 +4,7 @@
   "width": 400,
   "height": 400,
   "title": "Happiness By Region (2019)",
+  "background": null,
   "data": {
     "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
   },
