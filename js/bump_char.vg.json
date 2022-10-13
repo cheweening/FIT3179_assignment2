@@ -1,0 +1,60 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Bump chart",
+    "background": null,
+    "width": 400,
+    "height": 400,
+    "title": "Change in Ranking from 2015 till 2019",
+    "data": {
+      "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/combined_data.csv"
+    },
+    "transform": [{"filter": "datum['Overall rank'] <= 11"}],
+    "mark": {"type": "line", "point": {"size": 150}},
+    "params": [
+      {
+        "name": "continent_highlight",
+        "select": {"type": "point", "fields": ["Country or region"]},
+        "bind": "legend"
+      }
+    ],
+    "encoding": {
+      "x": {"field": "Year", "title": "Year"},
+      "y": {
+        "field": "Overall rank",
+        "type": "nominal",
+        "sort": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        "title": "Ranking"
+      },
+      "order": {"field": "Year"},
+      "color": {
+        "field": "Country or region", 
+        "type": "nominal",
+        "scale": {
+              "range": [
+                "#2f9fb3",
+                "#aef6f7",
+                "#7a4d4a",
+                "#f8b195",
+                "#f67280",
+                "#c06c84",
+                "#6c567b",
+                "#74698c",
+                "#c1867b",
+                "#ffeb99",
+                "#f5b5fc",
+                "#96f7d2",
+                "#fcb1b1"
+  
+              ]
+            }},
+      "opacity": {
+        "condition": {"param": "continent_highlight", "value": 0.9},
+        "value": 0.2
+      },
+      "tooltip": [
+        {"field": "Country or region", "title": "Country"},
+        {"field": "Overall rank", "title": "Rank"},
+        {"field": "Year", "title": "Year"}
+      ]
+    }
+  }
