@@ -8,7 +8,7 @@
     {
       "width": 300,
       "height": 300,
-      "title": "Breakdown Factor in percentage for each Country",
+      "title": "Breakdown Factor Contribution",
       "transform": [
         {
           "lookup": "Country or region",

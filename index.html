@@ -21,10 +21,26 @@
 <div class="homepage">
 
   <div class="title">
-    <div class="text" style="text-align: center; margin-top: 20px;">
+    <div class="text" style="text-align: center; margin-top: 20px; background-color: #bba39f;">
       <h1>Is The World Happy ?</h1>
+    </div>
+  
+    <div class="title">
+      <div class="text" style="text-align: left; margin-top: 20px;">
       <p>
-        This page includes two visulisations, one is the choropleth map showing the World Happiness for year 2019 and another one is the scatter plot indicating the Relationship Between Happiness and GDP per capital for year 2019.
+        The World Happiness Report, published by the United Nations' Sustainable 
+        Development Solutions Network (SDSN), uses survey data to determine how 
+        people in more than 150 countries rate their lives.
+      </p>
+      <p>
+        How happy are people today? Were people happier before? And how do our 
+        living conditions play a role in all of this? These are frequently asked 
+        questions about social health.
+      </p>
+      <p>
+        The Cantril Ladder Score is used to calculate the life ladder score 
+        (on a scale of 10). A higher life ladder score denotes a better life, 
+        whereas a lower score denotes a worse life.
       </p>
     </div>  
 
@@ -32,88 +48,129 @@
       <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_hYOJHUJAbe.json" background="transparent"  speed="1.5"  style="height: 200px; text-align: center;" loop autoplay></lottie-player>
       </div>
     </div>
-  
+
+    <div class="title">
+      <div class="text" style="text-align: center; margin-top: 20px; background-color: #bba39f;">
+        <h2>World Happiness</h2>
+      </div>
+
     <div class="pure-u-1-1" style="text-align: center; margin-top: 30px; background-color: #eddcd2;">
-      <h2>World Happiness</h2>
       <div id="choropleth_map" style="display: contents;"></div>
     </div>
 
-    <div class="description description" style="top: 50px; padding: 30px; text-align: center; background-color: #eddcd2;">
+    <div class="description description" style="top: 50px; padding: 30px; text-align: left; background-color: #eddcd2;">
       <p>
-        xxx
+        The choropleth map above shows the happiness score for each country for 
+        year 2019. There are large differences across countries, according to the 
+        map above, countries with higher score are Finland, Denmark, Iceland and so 
+        on which they have a score above 7. In the same year, the lowest national 
+        score corresponding to Afghanistan, Tanzania, Yemen and so on which are 
+        having score lesser than 3.5. 
       </p>
       </div>
     <br>
-
-  <div class="pure-g" style="top: 100px; padding: 30px; justify-content: space-around; text-align: center;">
-    <div class="pure-u-2-3">
+  
+  <div class="title">
+    <div class="text" style="text-align: center; margin-top: 20px; background-color: #bba39f;">
       <h2>Relationship Between Happiness and GDP per capital (2019)</h2>
+    </div>
+
+  <div class="pure-g" style="top: 100px; padding: 30px; justify-content: space-around; text-align: left;">
+    <div class="pure-u-2-3">
       <div id="scatterplot"></div>
     </div>
 
     <div class="pure-u-1-3">
       <div class="description description-right">
         <p>
-          xxxx
+          In scatter plot, each dot in the visualization represents one country. The 
+          vertical position of the visualization shows the GDP per capita based on 
+          purchasing power parity, where as the horizontal position shows the score 
+          which range from 0 to 10 where 10 is the highest possible score. 
+        </p>
+        <p>
+          This correlation help us to know the relationship between GDP and the happiness
+          score. From the scatter plot we can conclude that countires with higher GDP 
+          will have higher happiness score. 
         </p>
       </div>
     </div>
   </div>
   <br>
+
+  <div class="title">
+    <div class="text" style="text-align: center; margin-top: 20px; background-color: #bba39f;">
+      <h2>Happiness by Continent</h2>
+    </div>
 
   <div class="pure-g" style="top: 100px; padding: 30px; justify-content: space-around; background-color: #eddcd2;">
     <div class="pure-u-1-3" style="width: 30%;">
       <div class="description description-left">
         <p>
-          xxxxxx
+          Each bar in the bar graph indicates a continent and the height show the average 
+          scores of the country in that continent. From the graph we can see that Oceania 
+          have the highest average score which is 7.267 and Africa have the lowest score 
+          which is 4.368. For this graph we can conclude that people living in Oce is the 
+          happiest compare to the other continent.  
+        </p>
+        <p>
+          Oceania have the highest average score as New Zealand (ranking 8 in 2019), 
+          Australia (ranking 10 in 2019) belongs to that continent which contribute to a 
+          higher average score. 
         </p>
       </div>
     </div>
     <div class="pure-u-2-3" style="text-align: center;">
-      <h2>Relationship Between Happiness and Social support (2019)</h2>
-      <div id="scatterplot2"></div>
-    </div>
-  </div>
-  <br>
-
-  <div class="pure-g" style="top: 100px; padding: 30px; justify-content: space-around;">
-    <div class="pure-u-2-3">
-      <h2>Happiness by Continent</h2>
       <div id="bar_chart"></div>
     </div>
-
-    <div class="pure-u-1-3">
-      <div class="description description-right">
-        <p>
-          xxxx
-        </p>
-      </div>
-    </div>
   </div>
   <br>
 
+  <div class="title">
+    <div class="text" style="text-align: center; margin-top: 20px; background-color: #bba39f;">
+      <h2>Top 10 Happiness Ranking from 2015 till 2019</h2>
+    </div>
+
   <div class="pure-g" style="top: 100px; padding: 30px; justify-content: space-around;">
     <div class="pure-u-2-3">
-      <h2>Top 10 Happiness Ranking from 2015 till 2019</h2>
       <div id="bump_chart"></div>
     </div>
 
     <div class="pure-u-1-3">
       <div class="description description-right">
         <p>
-          xxxx
+          In the bump chart each colour indicate a country and the country is ranked according to 
+          it's corresponding score over different year from 2015 to 2019. From the bump chart we 
+          can observe that the country Finland have an big incrementation in rank from 2015 to 2019,
+          it when from the sixth place to the first. 
+        </p>
+        <p>
+          In the bump chart we can also observe that the country Switzerland and Canada have a very 
+          obvious drop since year 2015. Switzerland was in the first place in year 2015 and when down
+          to the sixth place in year 2019. Besides, Canada was in the fifth place in year 2015 and 
+          dropped to the ninth place in year 2019. 
         </p>
       </div>
     </div>
   </div>
   <br>
 
+  <div class="title">
+    <div class="text" style="text-align: center; margin-top: 20px; background-color: #bba39f;">
+      <h2>Breakdown Factor on Happiness</h2>
+    </div>
+
   <div class="pure-g" style="top: 100px; padding: 50px; justify-content: space-around; background-color: #eddcd2;">
     <div class="pure-u-1-3" style="width: 30%;">
       <div class="description description-left">
-        <h2>Breakdown Factor on Happiness</h2>
         <p>
-          xxxxxx
+          In the stacked bar chart, the sum of score of each factor contribute to the overall score for each country. Each bar 
+          indicates one country and the height indicates it’s total score. Each section in the bar indicate one factor and the 
+          factors can be differentiated by a unique colour. 
+        </p>
+        <p>
+          Selecting each bar will show the breakdown factors in the pie chart giving better visualisation on which factor contributed 
+          most to the total score.   
         </p>
       </div>
     </div>
