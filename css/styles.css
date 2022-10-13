@@ -8,8 +8,13 @@
 }
 
 .homepage{
-	background-color: #FFF9E3;
+	background-color: #FFF1E6;
 }
 
-
+.title{
+	font-size: 20px;
+	padding: 60px;
+	text-align: center;
+	background-color: #FFF1E6;
+}
 

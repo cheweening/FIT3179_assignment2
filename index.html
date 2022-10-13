@@ -21,29 +21,33 @@
 <div class="homepage">
 
   <div class="title">
-    <div class="text" style="text-align: center; margin-top: 50px;">
-      <h1>Happiness Report 2019</h1>
+    <div class="text" style="text-align: center; margin-top: 20px;">
+      <h1>Is The World Happy ?</h1>
       <p>
         This page includes two visulisations, one is the choropleth map showing the World Happiness for year 2019 and another one is the scatter plot indicating the Relationship Between Happiness and GDP per capital for year 2019.
       </p>
-      <h5>Created by </h5>
     </div>  
+
+    <div class="lottie-player-container">
+      <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_hYOJHUJAbe.json" background="transparent"  speed="1.5"  style="height: 200px; text-align: center;" loop autoplay></lottie-player>
+      </div>
+    </div>
   
-    <div class="pure-u-1-1" style="text-align: center; margin-top: 50px;">
+    <div class="pure-u-1-1" style="text-align: center; margin-top: 30px; background-color: #eddcd2;">
       <h2>World Happiness</h2>
       <div id="choropleth_map" style="display: contents;"></div>
     </div>
 
-    <div class="description description" style="top: 50px; padding: 30px; text-align: center;">
+    <div class="description description" style="top: 50px; padding: 30px; text-align: center; background-color: #eddcd2;">
       <p>
         xxx
       </p>
       </div>
     <br>
 
-  <div class="pure-g" style="top: 100px; padding: 50px; justify-content: space-around;">
+  <div class="pure-g" style="top: 100px; padding: 30px; justify-content: space-around; text-align: center;">
     <div class="pure-u-2-3">
-      <h2>Relationship </h2>
+      <h2>Relationship Between Happiness and GDP per capital (2019)</h2>
       <div id="scatterplot"></div>
     </div>
 
@@ -57,10 +61,24 @@
   </div>
   <br>
 
+  <div class="pure-g" style="top: 100px; padding: 30px; justify-content: space-around; background-color: #eddcd2;">
+    <div class="pure-u-1-3" style="width: 30%;">
+      <div class="description description-left">
+        <p>
+          xxxxxx
+        </p>
+      </div>
+    </div>
+    <div class="pure-u-2-3" style="text-align: center;">
+      <h2>Relationship Between Happiness and Social support (2019)</h2>
+      <div id="scatterplot2"></div>
+    </div>
+  </div>
+  <br>
 
-  <div class="pure-g" style="top: 100px; padding: 50px; justify-content: space-around;">
+  <div class="pure-g" style="top: 100px; padding: 30px; justify-content: space-around;">
     <div class="pure-u-2-3">
-      <h2>Continent </h2>
+      <h2>Happiness by Continent</h2>
       <div id="bar_chart"></div>
     </div>
 
@@ -73,20 +91,21 @@
     </div>
   </div>
   <br>
-    
-    <div class="pure-g" style="top: 100px; padding: 50px; justify-content: space-around;">
-      <div class="pure-u-1-3" style="width: 30%;">
-        <div class="description description-left">
-          <h2>Breakdown</h2>
-          <p>
-            xxx4
-          </p>
-        </div>
+
+  <div class="pure-g" style="top: 100px; padding: 50px; justify-content: space-around; background-color: #eddcd2;">
+    <div class="pure-u-1-3" style="width: 30%;">
+      <div class="description description-left">
+        <h2>Breakdown Factor on Happiness</h2>
+        <p>
+          xxxxxx
+        </p>
       </div>
-      <div class="pure-u-2-3" style="text-align: right;">
-        <div id="stacked_bar_chart"></div>
-      </div>
-      <br>
+    </div>
+    <div class="pure-u-2-3" style="text-align: right;">
+      <div id="stacked_bar_chart"></div>
+    </div>
+  </div>
+  <br>
 
 <script type="text/javascript">
 
@@ -97,6 +116,11 @@
   
   var spec2 = "js/scatterplot.vg.json";
   vegaEmbed('#scatterplot', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var spec2 = "js/scatterplot2.vg.json";
+  vegaEmbed('#scatterplot2', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
@@ -111,6 +135,8 @@
   }).catch(console.error);
 
 </script>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 </body>
 </html>

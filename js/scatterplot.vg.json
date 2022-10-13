@@ -2,7 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json", 
   "width": 500,
   "height": 500,
-  "title": "Relationship Between Happiness and GDP per capital (2019)",
   "background": null,
   "data": {
     "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
@@ -52,7 +51,7 @@
   },
   "layer": [
     {
-      "mark": "point",
+      "mark": "circle",
       "encoding": {
         "color": {
           "field": "Continent",
@@ -67,12 +66,12 @@
               "Oceania"
             ],
             "range": [
-              "#e41a1c",
-              "#984ea3",
-              "#ff7f00",
-              "#a6cee3",
-              "#377eb8",
-              "#a65628"
+              "#FF284B",
+              "#00A5E3",
+              "#C05780",
+              "#f35cba",
+              "#53051D",
+              "#696B7E"
             ]
           }
         },

@@ -3,7 +3,6 @@
   "$schema":  "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 400,
   "height": 400,
-  "title": "Happiness By Region (2019)",
   "background": null,
   "data": {
     "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
@@ -25,7 +24,7 @@
       "field": "Continent", 
       "type": "nominal",
       "scale": 
-              {"range": ["#c1e7e3","#c6e2e9","#a7bed3","#c1bbdd","#ffcaaf","#ecc9c7"]}
+              {"range": ["#f08080", "#ff9aa2","#ffb7b2","#abdee6","#a0c4ff","#c7ceea"]}
       },
     "x": {"field": "Continent", "type": "nominal"},
     "y": {"aggregate":"average" ,"field": "Score", "type": "quantitative"},

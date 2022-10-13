@@ -1,0 +1,107 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 500,
+    "background": null,
+    "data": {
+      "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
+    },
+    "params": [
+      {
+        "name": "Continent_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ],
+          "labels": [
+            "Show All",
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ],
+          "name": "Continent Selection: "
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+      }
+    ],
+    "encoding": {
+      "x": {"field": "Score", "type": "quantitative", "title": "Happiness Score"},
+      "y": {"field": "Social support", "type": "quantitative"}
+    },
+    "layer": [
+      {
+        "mark": "circle",
+        "encoding": {
+          "color": {
+            "field": "Continent",
+            "type": "nominal",
+            "scale": {
+              "domain": [
+                "North America",
+                "South America",
+                "Europe",
+                "Africa",
+                "Asia",
+                "Oceania"
+              ],
+              "range": [
+                "#FF284B",
+                "#00A5E3",
+                "#C05780",
+                "#f35cba",
+                "#53051D",
+                "#696B7E"
+              ]
+            }
+          },
+          "opacity": {"value": 0.6},
+          "tooltip": [
+            {"field": "Country or region", "type": "nominal"},
+            {"field": "Score", "type": "quantitative", "format": ","},
+            {"field": "Social support", "type": "quantitative", "format": ","}
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "middle",
+          "dx": -12,
+          "fontSize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {"field": "Country or region", "type": "nominal"},
+          "color": {"value": "black"},
+          "opacity": {
+            "condition": {
+              "test": "datum['Country or region'] == 'Albania' || datum['Country or region'] == 'Central African Rep.' || datum['Country or region'] == 'Mauritius' || datum['Country or region'] == 'Iceland' || datum['Country or region'] == 'Australia' || datum['Country or region'] == 'Haiti' || datum['Country or region'] == 'Bolivia' || datum['Country or region'] == 'Syria' || datum['Country or region'] == 'Israel' || datum['Country or region'] == 'Canada' || datum['Country or region'] == 'Venezuela' ",
+              "value": 1
+            },
+            "value": 0
+          },
+          "tooltip": [
+            {"field": "Country or region", "type": "nominal"},
+            {"field": "Score", "type": "quantitative", "format": ","},
+            {"field": "Social support", "type": "quantitative", "format": ","}
+          ]
+        }
+      }
+    ]
+  }
+  
