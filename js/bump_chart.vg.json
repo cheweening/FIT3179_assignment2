@@ -8,7 +8,7 @@
     "data": {
       "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/combined_data.csv"
     },
-    "transform": [{"filter": "datum['Overall rank'] <= 11"}],
+    "transform": [{"filter": "datum['Overall rank'] <= 10"}],
     "mark": {"type": "line", "point": {"size": 150}},
     "params": [
       {
@@ -37,14 +37,11 @@
                 "#f8b195",
                 "#f67280",
                 "#c06c84",
-                "#6c567b",
-                "#74698c",
+                "#6b3fa0",
+                "#a9a9a9",
                 "#c1867b",
-                "#edde74",
-                "#f5b5fc",
-                "#96f7d2",
-                "#c95740"
-  
+                "#e8a317",
+                "#f5b5fc"
               ]
             }},
       "opacity": {
