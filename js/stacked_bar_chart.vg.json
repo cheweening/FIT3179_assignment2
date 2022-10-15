@@ -6,8 +6,8 @@
   "background": null,
   "vconcat": [
     {
-      "width": 300,
-      "height": 300,
+      "width":400,
+      "height":200,
       "title": "Breakdown Factor Contribution on Percentage",
       "transform": [
         {
@@ -33,18 +33,34 @@
           "as": ["Breakdown Factors", "Happiness Score"]
         },
         {"filter": {"param": "select"}},
-        {"filter": "datum['Overall rank'] <= 10"},
-        {"calculate": "datum['Happiness Score']/datum['Score']", "as": "PercentageOfEachFactor"}
+        {"filter": "datum['Overall rank'] <= 5"},
+        {
+          "calculate": "datum['Happiness Score']/datum['Score']",
+          "as": "PercentageOfEachFactor"
+        }
       ],
       "data": {
         "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
-      },
+      },"layer": [
+        {"mark": {"type": "arc", "innerRadius": 25, "stroke": "#fff"}},
+        {
+          "mark": {"type": "text", "radiusOffset": 35},
+          "encoding": {
+            "text": {
+              "field": "PercentageOfEachFactor",
+              "type": "quantitative",
+              "format": ".0%"
+            }
+          }
+        }
+      ],
       "encoding": {
         "theta": {
           "field": "Happiness Score",
           "type": "quantitative",
           "stack": "normalize"
         },
+        "radius": {"field": "Happiness Score", "scale": {"type": "sqrt", "zero": true, "rangeMin": 200}},
         "color": {
           "field": "Breakdown Factors",
           "type": "nominal",
@@ -65,87 +81,71 @@
           {"field": "Breakdown Factors", "type": "nominal"},
           {"field": "Happiness Score", "type": "quantitative"}
         ]
-      },
-      "layer": [{
-    "mark": {"type": "arc", "outerRadius": 80, "stroke": "#fff"}
-  }, {
-    "mark": {"type": "text", "radius": 100},
-    "encoding": {
-      "text": {"field": "PercentageOfEachFactor", "type": "quantitative", "format": ".0%"}
-    }
-  }]
+      }
     },
     {
-          "title": "Top 10 Countries Happiness Score Factor Breakdown (2019)",
-          "transform": [
-            {
-              "lookup": "Country or region",
-              "from": {
-                "data": {
-                  "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
-                },
-                "key": "Country or region",
-                "fields": ["GDP per capita"]
-              }
+      "width":400,
+      "height":100,
+      "title": "Top 5 Countries Happiness Score Factor Breakdown (2019)",
+      "transform": [
+        {
+          "lookup": "Country or region",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
             },
-            {
-              "fold": [
-                "GDP per capita",
-                "Social support",
-                "Healthy life expectancy",
-                "Freedom to make life choices",
-                "Generosity",
-                "Perceptions of corruption",
-                "Dystopia & residual"
-              ],
-              "as": ["Breakdown Factors", "Happiness Score"]
-            },
-            {"filter": "datum['Overall rank'] <= 10"}
+            "key": "Country or region",
+            "fields": ["GDP per capita"]
+          }
+        },
+        {
+          "fold": [
+            "GDP per capita",
+            "Social support",
+            "Healthy life expectancy",
+            "Freedom to make life choices",
+            "Generosity",
+            "Perceptions of corruption",
+            "Dystopia & residual"
           ],
-          "layer": [
-            {
-              "mark": "bar",
-              "params": [
-                {
-                  "name": "select",
-                  "select": {"type": "point", "encodings": ["y"]}
-                }
-              ],
-              "encoding": {
-                "color": {"field": "Breakdown Factors", "type": "nominal"},
-                "x": {
-                  "field": "Happiness Score",
-                  "type": "quantitative",
-                  "scale": {"domain": [0, 9]},
-                  "axis": {"orient": "top"}
-                },
-                "y": {
-                  "field": "Overall rank",
-                  "type": "nominal",
-                  "sort": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-                  "title": "Ranking"
-                },
-                "tooltip": [
-                  {"field": "Country or region", "type": "nominal"},
-                  {"field": "GDP per capita", "type": "quantitative"},
-                  {"field": "Social support", "type": "quantitative"},
-                  {"field": "Healthy life expectancy", "type": "quantitative"},
-                  {
-                    "field": "Freedom to make life choices",
-                    "type": "quantitative"
-                  },
-                  {"field": "Generosity", "type": "quantitative"},
-                  {
-                    "field": "Perceptions of corruption",
-                    "type": "quantitative"
-                  },
-                  {"field": "Dystopia & residual", "type": "quantitative"},
-                  {"field": "Score", "type": "quantitative", "format": ","}
-                ]
-              }
-            }
-          ]
+          "as": ["Breakdown Factors", "Happiness Score"]
+        },
+        {"filter": "datum['Overall rank'] <= 5"}
+      ],
+      "layer": [
+        {
+          "mark": "bar",
+          "params": [
+            {"name": "select", "select": {"type": "point", "encodings": ["y"]}}
+          ],
+          "encoding": {
+            "color": {"field": "Breakdown Factors", "type": "nominal"},
+            "x": {
+              "field": "Happiness Score",
+              "type": "quantitative",
+              "scale": {"domain": [0, 9]},
+              "axis": {"orient": "top"}
+            },
+            "y": {
+              "field": "Overall rank",
+              "type": "nominal",
+              "sort": ["1", "2", "3", "4", "5"],
+              "title": "Ranking"
+            },
+            "tooltip": [
+              {"field": "Country or region", "type": "nominal"},
+              {"field": "GDP per capita", "type": "quantitative"},
+              {"field": "Social support", "type": "quantitative"},
+              {"field": "Healthy life expectancy", "type": "quantitative"},
+              {"field": "Freedom to make life choices", "type": "quantitative"},
+              {"field": "Generosity", "type": "quantitative"},
+              {"field": "Perceptions of corruption", "type": "quantitative"},
+              {"field": "Dystopia & residual", "type": "quantitative"},
+              {"field": "Score", "type": "quantitative", "format": ","}
+            ]
+          }
+        }
+      ]
     }
-  ],
-  "resolve": {"legend": {"color": "independent", "size": "independent"}}
+  ]
 }
