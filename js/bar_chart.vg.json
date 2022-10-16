@@ -1,60 +1,53 @@
 
 {
-  "$schema":  "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 400,
   "height": 400,
   "background": null,
   "data": {
     "url": "https://raw.githubusercontent.com/cheweening/FIT3179_assignment2/main/data/2019.csv"
   },
-  "mark": {
-    "type": "bar",
-    "stroke": "black",
-    "cursor": "pointer"
-  },
-  "params": [
-    {
-      "name": "highlight",
-      "select": {"type": "point", "on": "mouseover"}
-    },
-    {"name": "select", "select": "point"}
-  ],
   "encoding": {
     "color": {
-      "field": "Continent", 
+      "field": "Continent",
       "type": "nominal",
-      "scale": 
-              {"range": ["#f08080", "#ff9aa2","#ffb7b2","#abdee6","#a0c4ff","#c7ceea"]}
-      },
+      "scale": {
+        "range": [
+          "#f08080",
+          "#ff9aa2",
+          "#ffb7b2",
+          "#abdee6",
+          "#a0c4ff",
+          "#c7ceea"
+        ]
+      }
+    },
     "x": {"field": "Continent", "type": "nominal"},
-    "y": {"aggregate":"average" ,"field": "Score", "type": "quantitative"},
+    "y": {"aggregate": "average", "field": "Score", "type": "quantitative"},
     "tooltip": [
-          {"field": "Continent", "type": "nominal"},
-          {"aggregate":"average" ,"field": "Score", "type": "quantitative", "format": ","}
-        ],
-        "fillOpacity": {
-          "condition": {"param": "select", "value": 1},
-          "value": 0.3
-        },
-        "strokeWidth": {
-          "condition": [
-            {
-              "param": "select",
-              "empty": false,
-              "value": 2
-            },
-            {
-              "param": "highlight",
-              "empty": false,
-              "value": 1
-            }
-          ],
-          "value": 0
-        }
+      {"field": "Continent", "type": "nominal"},
+      {
+        "aggregate": "average",
+        "field": "Score",
+        "type": "quantitative",
+        "format": "0.3"
+      }
+    ]
   },
-  "config": {
-    "scale": {
-      "bandPaddingInner": 0.2
+  "layer": [{
+    "mark": {"type": "bar", "stroke": "white"}
+  }, {
+    "mark": {
+      "type": "text",
+      "align": "center",
+      "baseline": "middle",
+      "dx": 1,
+      "dy" : -10
+    },
+    "encoding": {
+      "text": {"aggregate": "average", "field": "Score", "type": "quantitative", "format": "0.3"},
+      "color": {"value":"black"}
     }
-  }
+  }],
+  "config": {"scale": {"bandPaddingInner": 0.2}}
 }
