@@ -52,28 +52,28 @@ h1 {
     font-size: 14px;
 }
 
-.topnav{
+.selection_neg{
 	padding: 10px 0 8px 0;
 }
 
-.topnav ul{
+.selection_neg ul{
 	list-style-type: none;
     overflow: hidden;
     display: block;
 }
 
-.topnav li{
+.selection_neg li{
 	display: inline-flex;
 	padding: 0 13px;
 	font-size: 18px;
 }
 
-.topnav li a{
+.selection_neg li a{
 	color: black;
 	text-decoration: none;
 }
 
-.topnav li a:hover{
+.selection_neg li a:hover{
 	color: black;
 	cursor:pointer;
 	font-weight: 900;
